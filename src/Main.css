@@ -1,0 +1,590 @@
+@font-face {
+    font-family: pixelart;
+    src: url(assets/PIXELADE.woff);
+}
+
+@font-face {
+    font-family: LuckiestGuy;
+    src: url(assets/LuckiestGuy.woff);
+}
+
+@font-face {
+    font-family: Gugi;
+    src: url(assets/Gugi.woff);
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(assets/OpenSans.woff);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    background-color: #2D3E50;
+}
+
+.containerMain{
+    background-color:#2D3E50;
+}
+
+.mainContainer{
+    width:100%;
+}
+
+.mainAdvertisements{
+    display: flex;
+    padding:40px 80px;
+    width:100%;
+}
+
+.mainAdvertisementCard{
+    width:50%;
+    height:calc((100vw - 160px) * 0.5 * 0.6);
+    padding:10px;
+}
+
+.mainAdvertisementCard img{
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+    font-family: OpenSans;
+    user-select: none;
+}
+
+.navbar{
+    padding-bottom:20px;
+    padding-left:20px;
+    padding-right:20px;
+    display:flex;
+    justify-content: center;
+    font-family: OpenSans;
+    color:rgb(216, 216, 216);
+    font-size: 10pt;
+}
+
+.navbar a{
+    text-decoration: none;
+    color:rgb(164, 164, 164);
+    font-family: OpenSans;
+    margin:0px 10px;
+}
+
+.mainDestaquesContainer{
+    position:relative;
+    width:100%;
+    padding-left:80px;
+    padding-right:80px;
+}
+
+.mainDestaques{
+    width:100%;
+    height:100%;
+    height:calc((100vw - 160px) * 0.35);
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+    font-family: OpenSans;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Badge0Holder, .Badge1Holder, .Badge3Holder, .Badge15Holder{
+    position:absolute;
+    padding:10px 13px;
+    border: 0px;
+    box-shadow: 0px 0px 10px 2px rgb(71, 129, 254);
+    border-radius:10px;
+    font-family: OpenSans;
+    user-select: none;
+}
+
+.Badge0Holder{
+    background-color: white;
+    color: black;
+}
+
+.Badge1Holder{
+    background-color: #FF4747;
+    color: white;
+}
+
+.Badge3Holder{
+    background-color: #0072CE;
+    color: white;
+}
+
+.Badge15Holder{
+    background-color: #ffee02;
+    color: black;
+}
+
+.catalogContainer{
+    width:100%;
+    padding:10px 160px;
+}
+
+.catalogTopbar{
+    width:100%;
+    display:flex;
+    align-items: center;
+    padding:20px 0px;
+}
+
+.catalogTopbarTitle{
+    width:fit-content;
+    color:white;
+    font-family:OpenSans;
+    font-size:19pt;
+}
+
+.catalogTopbarWrap{
+    flex-grow: 1;
+}
+
+.catalogTopbarViewAll{
+    width:fit-content;
+}
+
+.catalogTopbarViewAll button{
+    border:1px solid white;
+    color: white;
+    font-family:OpenSans;
+    font-size:13px;
+    background-color: transparent;
+    padding:5px 10px;
+}
+
+.catalogTopbarViewAll button:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.catalogList, .catalogAdvertisement{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 50px 0px;
+}
+
+.catalogListItem{
+    padding:10px;
+}
+
+.catalogListItemCard{
+    position:relative;
+    width:100%;
+    padding-top: 40%;
+    border-radius:10px;
+    overflow: hidden;
+}
+
+.catalogListItemCardHover{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% auto;
+    background-position: center center;
+    font-family: OpenSans;
+    font-size:13pt;
+    color:white;
+    cursor:pointer;
+    user-select: none;
+}
+
+.catalogAdvertisementCard{
+    padding:10px;
+}
+
+.catalogAdvertisementCard img{
+    cursor:pointer;
+    width:100%;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.nextReleasesList{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.nextReleasesListItem{
+    padding:10px;
+}
+
+.nextReleasesListItemCard{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+}
+
+.nextReleasesListItemCardImageContainer{
+    position:relative;
+    width:100%;
+    padding-top:100%;
+    border-radius:10px;
+    overflow: hidden;
+}
+
+.nextReleasesListItemCardImage{
+    position: absolute;
+    top:0px;
+    left:50%;
+    transform: translate(-50%, 0);
+    bottom:0px;
+    right:0px;
+    height:100%;
+    cursor:default;
+}
+
+.nextReleasesListItemCardTitleContainer{
+    position:absolute;
+    top:100%;
+    left:0px;
+    width:100%;
+    display: inline-block;
+}
+
+.nextReleasesListItemCardTitle{
+    padding:5px;
+    color:rgb(242, 242, 242);
+    font-family: OpenSans;
+    font-size: 14pt;
+}
+
+.nextReleasesListItemCardSubtitle{
+    font-size: 10pt;
+    padding:2px 5px;
+    color:rgb(160, 160, 160);
+    font-family: OpenSans;
+}
+
+.nextReleasesListItemCardWrapper{
+    flex-grow: 1;
+    width:100%;
+}
+
+.nextReleasesListItemCardHolders{
+    position: relative;
+    margin: 40px 10px 10px 10px;
+    padding: 5px 10px;
+    font-size: 9pt;
+    text-align: center;
+}
+
+.p2eGameList{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.p2eGameListItem{
+    padding:10px;
+}
+
+.p2eGameListItemCard{
+    position:relative;
+    width:100%;
+    overflow: hidden;
+    display:flex;
+    flex-direction: column;
+}
+
+.p2eGameListItemCardImageContainer{
+    position:relative;
+    width:100%;
+    padding-top:100%;
+    border-radius:10px;
+    overflow: hidden;
+}
+
+.p2eGameListItemCardImage{
+    position: absolute;
+    top:0px;
+    left:50%;
+    transform: translate(-50%, 0);
+    bottom:0px;
+    right:0px;
+    height:100%;
+    cursor:default;
+}
+
+.p2eGameListItemCardTitleContainer{
+    position:absolute;
+    top:100%;
+    left:0px;
+    width:100%;
+    display: inline-block;
+}
+
+.p2eGameListItemCardTitle{
+    padding:5px;
+    color:rgb(242, 242, 242);
+    font-family: OpenSans;
+    font-size: 14pt;
+}
+
+.p2eGameListItemCardSubtitle{
+    font-size: 10pt;
+    padding:2px 5px;
+    color:rgb(160, 160, 160);
+    font-family: OpenSans;
+}
+
+.p2eGameListItemCardHolders{
+    position: relative;
+    margin: 40px 10px 10px 10px;
+    padding: 5px 10px;
+    font-size: 9pt;
+    text-align: center;
+}
+
+.mainDestaquesAd{
+    height:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.initComingSoon{
+    /*display:flex;*/
+    align-items: center;
+    justify-content: center;
+    font-family: pixelart;
+    color: white;
+    font-size: 30pt;
+    user-select: none;
+    display:none;
+}
+
+.initContainer{
+    align-items: center;
+    justify-content: center;
+    font-family: pixelart;
+    color: white;
+    font-size: 30pt;
+    user-select: none;
+    display:flex;
+    height:fit-content;
+    flex-direction: column;
+}
+
+#initGame{
+    position:relative;
+}
+
+#initPresentation, #initGame{
+    width:100%;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.initCatalogItemImage{
+    width:100%;
+    transition: opacity 0.5s;
+}
+
+.initCatalogItemImage:hover{
+    opacity:0;
+}
+
+.initCatalogItemImageHover{
+    position:absolute;
+    width: calc(100% - 20px);
+    top:10px;
+    left:10px;
+    z-index:-1;
+}
+
+#initCatalogContainer{
+    width:100%;
+    height:fit-content;
+    display:flex;
+    flex-direction: column;
+    
+    padding:20px;
+    padding-top:150px;
+}
+
+#initCatalog{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    
+}
+
+.initCatalogItem{
+    padding:10px;
+    position:relative;
+}
+
+#initPresentation{
+    display:flex;
+    flex-direction: row;
+    position:relative;
+    align-items: center;
+}
+
+.arrowNavigator{
+    position:absolute;
+    top: 100vh;
+    left:50%;
+    transform: translate(-50%, -100%);
+    width:40px;
+    height:40px;
+    cursor:pointer;
+    background-size: 40px 40px;
+}
+
+.logotype{
+    position: fixed;
+    top:50px;
+    left:50px;
+    width:50px;
+    height:50px;
+    z-index:2;
+    user-select: none;
+}
+
+/* CSS button 54 */
+.button-54, .connectButton {
+    font-family: pixelart;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    background-color:#000;
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-54:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+.connectButton:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 55px;
+    right: 45px;
+}
+
+@media (min-width: 768px) {
+    .button-54, .connectButton {
+        padding: 0.25em 0.75em;
+    }
+}
+
+.connectButton{
+    position:fixed !important;
+    top:50px;right:50px;
+    z-index:3;
+}
+
+.profileDiv{
+    position: fixed;
+    z-index: 3;
+    padding: 20px;
+    top:50px;right:50px;
+    color:#fff;
+    border: 2px solid white;
+    background-color: #000;
+    font-family: pixelart;
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+.inventoryDiv{
+    position:relative;
+}
+
+.inventoryDiv img{
+    width:50px;
+    height:50px;
+    margin-right: 30px;
+}
+
+.inventoryDivNumber{
+    position:absolute;
+    right:30px;
+    font-family: pixelart;
+    background-color: rgb(215, 69, 69);
+    padding: 5px;
+    border-radius:15px;
+    user-select: none;
+}
+
+/* particles */
+#particles-js canvas
+{
+    display: block;
+    vertical-align: bottom;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+    transition: opacity .8s ease, transform 1.4s ease
+}
+#particles-js 
+{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -10;
+    top: 0px;
+    left: 0px;
+}
+canvas
+{
+    display:block;
+    position: fixed;
+    z-index: -1;
+}
+
+.initFooter{
+    width:100%;
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.initFooter img{
+    width:25px;
+    margin-left:20px;
+}

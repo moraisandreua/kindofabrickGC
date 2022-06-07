@@ -1,0 +1,96 @@
+#game1, .inputkob{
+    background-color: black;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border:0px;
+}
+
+.inputkob{
+    background-color: black;
+    border:2px solid white;
+    padding: 20px;
+    font-family:pixelart; 
+    font-size:15pt;
+    width:450px;
+    color:white;
+}
+
+.buttonPlay{
+    width:300px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttonPlay:active{
+    top:calc(50% + 5px);
+    left:calc(50% + 5px);
+    transform: translate(-50%, -50%);
+}
+
+.containerGameWrapper{
+    position:absolute;
+    z-index: 1;
+    top:142px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    background: linear-gradient(to top, #000, transparent);
+    display:flex;
+    flex-direction: column;
+}
+
+.containerGameWrapperGameInfo{
+    width:100%;
+    height:fit-content;
+    display:flex;
+    padding-top:20px;
+    padding-right:20px;
+    padding-bottom: 80px;
+    padding-left: 80px;
+}
+
+.containerGameWrapperGameInfoLogo{
+    width:fit-content;
+}
+
+.containerGameWrapperGameInfoTitle{
+    display: flex;
+    flex-direction: column;
+    padding-left:40px;
+    padding-top:40px;
+    color:white;
+    font-size: 25pt;
+    font-family: OpenSans;
+    user-select: none;
+    width:fit-content;
+}
+
+.containerGameWrapperGameInfoLogoContainer{
+    position:relative;
+    width:200px;
+    height:200px;
+    border-radius:10px;
+    overflow: hidden;
+}
+
+.containerGameWrapperGameInfoLogoContainerImage{
+    position: absolute;
+    top:0px;
+    left:50%;
+    transform: translate(-50%, 0);
+    bottom:0px;
+    right:0px;
+    height:100%;
+    cursor:default;
+}
+
+.containerGameWrapperGameInfoButton{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
+}

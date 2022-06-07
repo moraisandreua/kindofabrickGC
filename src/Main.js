@@ -189,50 +189,7 @@ export default function Main() {
           e.preventDefault();
       }
     }, false);
-
-    /*async function t() {
-
-        const S = await Cardano();
-        nami = new NamiWalletApi(
-            S,
-            window.cardano,
-          blockfrostApiKey
-        )
-
-        if (await nami.isInstalled()) {
-            await nami.isEnabled().then(result => { setConnected(result); getAddress(); })
-        }
-    }
-
-    t()
-    init();*/
   }, []);
-
-  /*const connect = async () => {
-    // Connects nami wallet to current website 
-    await nami.enable()
-        .then(result => {setConnected(result); getAddress();})
-        .catch(e => console.log("error: ",e))
-  }
-
-  const getAddress = async () => {
-      // retrieve address of nami wallet
-      /*if (!connected) {
-          await connect()
-      }*/
-      /*await nami.getAddress().then((newAddress) => { setAddress(newAddress);  setAddrShort(newAddress.substring(0,6) + "..." + newAddress.substring(newAddress.length-6, newAddress.length)); getBalance(); })
-  }
-
-  const getBalance = async () => {
-      /*if (!connected) {
-          await connect()
-      }*/
-      /*await nami.getBalance().then(result => { setNfts(result.assets.filter((el) => {return el.policy=="e00352bf7e5623ab63afb8cf05b3ee1e90bd8af9457bba9f28a7c8b6"}));})
-  }*/
-
-  const init = () => {
-    //console.log(window.cardano)
-  }
 
   const scrollIntoView = (e) =>{
       e.preventDefault();

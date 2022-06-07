@@ -7,47 +7,7 @@ import {
 } from 'react-router-dom';
 import {
     Address,
-    BaseAddress,
-    MultiAsset,
-    Assets,
-    ScriptHash,
-    Costmdls,
-    Language,
-    CostModel,
-    AssetName,
-    TransactionUnspentOutput,
-    TransactionUnspentOutputs,
-    TransactionOutput,
     Value,
-    TransactionBuilder,
-    TransactionBuilderConfigBuilder,
-    TransactionOutputBuilder,
-    LinearFee,
-    BigNum,
-    BigInt,
-    TransactionHash,
-    TransactionInputs,
-    TransactionInput,
-    TransactionWitnessSet,
-    Transaction,
-    PlutusData,
-    PlutusScripts,
-    PlutusScript,
-    PlutusList,
-    Redeemers,
-    Redeemer,
-    RedeemerTag,
-    Ed25519KeyHashes,
-    ConstrPlutusData,
-    ExUnits,
-    Int,
-    NetworkInfo,
-    EnterpriseAddress,
-    TransactionOutputs,
-    hash_transaction,
-    hash_script_data,
-    hash_plutus_data,
-    ScriptDataHash, Ed25519KeyHash, NativeScript, StakeCredential
 } from "@emurgo/cardano-serialization-lib-asmjs"
 import { Buffer } from "buffer";
 import Loader from "./nami-js/loader";
@@ -96,6 +56,18 @@ export default function General() {
         }
         
         setCardanoFoundWallets(wallets);
+    }
+
+    const orderWalletIcons = (walletKey) => {
+        var temp = []
+
+        temp.push(walletIcons.filter((el)=>el[0]==walletKey)[0]);
+
+        walletIcons.filter((el)=>el[0]!=walletKey).map((el)=>{
+            if(el[0]!=walletKey) temp.push(el);
+        })
+        
+        setWalletIcons(temp)
     }
 
     const checkIfWalletEnabled = async () => {
@@ -200,6 +172,7 @@ export default function General() {
         pollWallets();
         if (localStorage.getItem("lastUsedWallet") !== null) {
             setWhichWalletSelected(localStorage.getItem("lastUsedWallet"))
+            orderWalletIcons(localStorage.getItem("lastUsedWallet"));
         }
     }, []);
 
@@ -227,7 +200,7 @@ export default function General() {
                 <span className='topbarConnectTitle' >{ (walletIsEnabled) ? usedAddressShortened : "connect " }</span>
                 <div className='topbarConnectSelect'>
                 {
-                    walletIcons.map((el) => { return <img key={el[1]+"WalletIcon"} src={el[1]} onClick={() => setWhichWalletSelected(el[0])}/>})
+                    walletIcons.map((el) => { return <img key={el[1]+"WalletIcon"} src={el[1]} onClick={() => {setWhichWalletSelected(el[0]); orderWalletIcons(el[0])}}/>})
                 }
                 </div>
             </div>

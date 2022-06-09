@@ -27,6 +27,8 @@ import yoroiWalletIcon from './assets/yoroiWallet.png';
 import typhonWalletIcon from './assets/typhonWallet.png';
 
 export default function General() {
+    const [selectedGameId, setSelectedGameId] = useState(0);
+
     const [cardanoFoundWallets, setCardanoFoundWallets] = useState([]);
     const [walletIcons, setWalletIcons] = useState([ ["nami", namiWalletIcon], ["eternl", eternlWalletIcon], ["flint", flintWalletIcon], ["yoroi", yoroiWalletIcon], ["typhoncip30", typhonWalletIcon] ]); // set the order of wallet icons
 
@@ -222,8 +224,8 @@ export default function General() {
         
             
             <Switch>
-                <Route exact path='/'><Main/></Route>
-                <Route exact path='/game'><Game address="" kob={0} listOfKobs={[]} gameId={0} /></Route>
+                <Route exact path='/'><Main setGameId={setSelectedGameId}/></Route>
+                <Route exact path='/game/:id'><Game address="" kob={0} listOfKobs={[]} gameId={selectedGameId} /></Route>
             </Switch>
             </Router>
         </div>

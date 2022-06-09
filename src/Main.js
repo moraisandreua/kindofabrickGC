@@ -98,6 +98,7 @@ import twitter_icon from './assets/twitter_icon.png';
 import jpg_icon from './assets/jpg_icon.png';
 import search_icon from './assets/searchIcon.png';
 import advertiseHere1 from './assets/advertiseHere1-01.svg';
+import mainPageBanner from './assets/mainPageBanner_1.jpg';
 import p2egame from './assets/p2egame.png';
 import unknownBrick from './assets/unknownBrick.png';
 import footerBanner from './assets/footerBanner.png';
@@ -224,7 +225,7 @@ export default function Main() {
         </div>
 
         <div className='mainDestaquesContainer'>
-          <div className='mainDestaques'>
+          <div className='mainDestaques' style={{backgroundImage: "url("+mainPageBanner+")"}}>
             <div className='Badge0Holder' style={{bottom:"40px", right:"84px"}}>0+ Holders</div>
             {/* image here */}
           </div>
@@ -238,7 +239,7 @@ export default function Main() {
           </div>
           <div className='catalogList'>
             {playNow.map((el, i)=>
-              (!viewAll && i<3) ? <Link to="/game" key={"gameCard_"+el[0]}><div className='catalogListItem'>
+              (!viewAll && i<3) ? <Link to={ "/game/"+el[0] } key={"gameCard_"+el[0]} ><div className='catalogListItem'>
                 <div className='catalogListItemCard'>
                   <div className='catalogListItemCardHover' style={{backgroundImage:"url("+el[2] + ")"}}></div>
                   <div className='catalogListItemCardHover' style={{background:"linear-gradient(to top, #000, transparent)"}}>
@@ -246,7 +247,7 @@ export default function Main() {
                   </div>
                   <div className={'Badge'+el[3]+'Holder'} style={{bottom:"0px", right:"0px", borderRadius:"10px 0px 10px 0px", fontSize:"10pt", padding:"5px 15px"}}>{el[3]}+ Holders</div>
                 </div>
-              </div></Link> : (viewAll) ? <Link to="/game" key={"gameCard_"+el[0]}><div className='catalogListItem'>
+              </div></Link> : (viewAll) ? <Link to={ "/game/"+el[0] } key={"gameCard_"+el[0]}><div className='catalogListItem'>
                 <div className='catalogListItemCard'>
                   <div className='catalogListItemCardHover' style={{backgroundImage:"url("+el[2] + ")"}}></div>
                   <div className='catalogListItemCardHover' style={{background:"linear-gradient(to top, #000, transparent)"}}>

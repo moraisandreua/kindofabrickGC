@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {useParams} from "react-router-dom";
 import game1 from './assets/game1.png';
 import game2 from './assets/game2.png';
 import game9 from './assets/game9.png';
@@ -6,6 +7,8 @@ import game44 from './assets/game44.png';
 import './Game.css';
 
 export default function Game(props) {
+  const params=useParams();
+
   const [address, setAddress] = useState()
   const [kob, setKob] = useState()
   const [kobToken, setKobToken] = useState()
@@ -16,6 +19,7 @@ export default function Game(props) {
 
   const availableGames=["1", "2", "3", "4"];
   const aGames=[
+    ["0","Loading","",0,"loading..."],
     ["1","Racing Masters",game1,3, "description"],
     ["2","Tower Building",game2,1, "description"],
     ["3","Hextris",game9,1, "description"],
@@ -26,9 +30,7 @@ export default function Game(props) {
     setAddress(props.address);
     setKob(props.kob);
     setNfts(props.listOfKobs);
-    setGameId(props.gameId);
-
-    console.log(props.gameId);
+    setGameId(params.id);
 
     if(kob!=undefined && kob!=null){
       document.getElementById("game"+gameId).contentWindow.focus();
@@ -58,7 +60,7 @@ export default function Game(props) {
   }
 
   return (
-    <div className="container">
+    <div className="container containerGame">
       <div className="containerGameWrapper" style={ (showGameHover)?{display:"flex"}:{display:"none"}}>
         <div style={{flexGrow:"1"}}></div>
         <div className='containerGameWrapperGameInfo'>

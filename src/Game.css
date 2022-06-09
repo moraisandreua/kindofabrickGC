@@ -1,9 +1,14 @@
-#game1, .inputkob{
+.inputkob{
     background-color: black;
     position:absolute;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
+    border:0px;
+}
+
+.containerGame iframe{
+    background-color: black;
     border:0px;
 }
 
@@ -29,6 +34,13 @@
     top:calc(50% + 5px);
     left:calc(50% + 5px);
     transform: translate(-50%, -50%);
+}
+
+.containerGame{
+    display:flex;
+    justify-content: center;
+    width:100%;
+    height:100%;
 }
 
 .containerGameWrapper{

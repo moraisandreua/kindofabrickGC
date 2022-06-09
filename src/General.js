@@ -17,6 +17,7 @@ import Game from './Game';
 
 import logo from './assets/logotype.png';
 import search_icon from './assets/searchIcon.png';
+import noKobs_icon from './assets/noKobs.png';
 
 // wallet icons
 import namiWalletIcon from './assets/namiWallet.png';
@@ -38,6 +39,10 @@ export default function General() {
     const [balance, setBalance] = useState(undefined);
     const [usedAddress, setUsedAddress] = useState(undefined);
     const [usedAddressShortened, setUsedAddressShortened] = useState(undefined);
+    const [noKobs, setNoKobs] = useState(0)
+
+
+    const [apikey, setApiKey] = useState(undefined);
 
     var API = null;
       
@@ -136,7 +141,7 @@ export default function General() {
             const usedAddress = Address.from_bytes(Buffer.from(rawFirst, "hex")).to_bech32()
             setUsedAddress(usedAddress);
             setUsedAddressShortened(usedAddress.substring(0,5) + "..." + usedAddress.substring(usedAddress.length - 4, usedAddress.length));
-
+            getNumberKobs(usedAddress);
         } catch (err) {
             console.log(err)
         }
@@ -153,6 +158,7 @@ export default function General() {
                 if (walletEnabled) {
                     await getBalance();
                     await getUsedAddresses();
+                    
                 } else {
                     setBalance(null);
                     setUsedAddress(null);
@@ -168,7 +174,14 @@ export default function General() {
         }
     }
 
+    const getNumberKobs = (addr) => {
+        fetch("https://kindofabrick.pythonanywhere.com/assets?address="+addr).then((data)=>data.json()).then((data)=>{
+            setNoKobs(data["no_kobs"])
+        })
+    }
+
     useEffect(()=>{
+        
         pollWallets();
         if (localStorage.getItem("lastUsedWallet") !== null) {
             setWhichWalletSelected(localStorage.getItem("lastUsedWallet"))
@@ -180,10 +193,6 @@ export default function General() {
         if(whichWalletSelected != undefined)
             refreshData();
     }, [whichWalletSelected]);
-
-    const connect = async () => {
-        
-    }
 
     return (
         <div className="container">
@@ -197,6 +206,7 @@ export default function General() {
             </div>
             <div className='topbarFlexWrapper'></div>
             <div className='topbarControlsContainer'>
+                <div className='topbarControlsContainerBadge'>{noKobs}<img src={noKobs_icon}/></div>
                 <span className='topbarConnectTitle' >{ (walletIsEnabled) ? usedAddressShortened : "connect " }</span>
                 <div className='topbarConnectSelect'>
                 {

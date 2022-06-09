@@ -47,6 +47,25 @@
     position: relative;
 }
 
+.topbarControlsContainerBadge{
+    position:absolute;
+    left:-65px;
+    top:-5px;
+    background-color:red;
+    display:flex;
+    align-items: center;
+    padding:5px 10px;
+    border-radius:30px;
+    font-family: Gugi;
+    font-size:12pt;
+    user-select: none;
+}
+
+.topbarControlsContainerBadge img{
+    width:24px;
+    margin-left:5px;
+}
+
 .topbarConnectTitle{
     margin-right:52px;
     cursor:pointer;

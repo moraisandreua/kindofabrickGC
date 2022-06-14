@@ -14,6 +14,7 @@ import Loader from "./nami-js/loader";
 import './General.css';
 import Main from './Main';
 import Game from './Game';
+import Leaderboard from './Leaderboard';
 
 import logo from './assets/logotype.png';
 import search_icon from './assets/searchIcon.png';
@@ -42,7 +43,7 @@ export default function General() {
     const [usedAddress, setUsedAddress] = useState(undefined);
     const [usedAddressShortened, setUsedAddressShortened] = useState(undefined);
     const [noKobs, setNoKobs] = useState(0)
-
+    const [kobList, setKobList] = useState([])
 
     const [apikey, setApiKey] = useState(undefined);
 
@@ -178,7 +179,14 @@ export default function General() {
 
     const getNumberKobs = (addr) => {
         fetch("https://kindofabrick.pythonanywhere.com/assets?address="+addr).then((data)=>data.json()).then((data)=>{
-            setNoKobs(data["no_kobs"])
+            setNoKobs(data["no_kobs"]);
+
+            var tempKobList = [];
+            for(var i=0; i<data["kobList"].length; i++){
+                tempKobList.push("KOB #"+data["kobList"][i]);
+            }
+
+            setKobList(tempKobList);
         })
     }
 
@@ -225,7 +233,8 @@ export default function General() {
             
             <Switch>
                 <Route exact path='/'><Main setGameId={setSelectedGameId}/></Route>
-                <Route exact path='/game/:id'><Game address="" kob={0} listOfKobs={[]} gameId={selectedGameId} /></Route>
+                <Route exact path='/game/:id'><Game address={usedAddress} listOfKobs={kobList} gameId={selectedGameId} /></Route>
+                <Route exact path='/leaderboard'><Leaderboard /></Route>
             </Switch>
             </Router>
         </div>

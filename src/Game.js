@@ -81,7 +81,7 @@ export default function Game(props) {
         {(gameId && kobToken) ? <iframe src={"https://brickgames.io/game/"+gameId+"/index.html?address="+address+"&token="+kobToken} width="644" height="516" id={"game"+gameId}></iframe> : (gameId && useRandom) ? <iframe src={"https://brickgames.io/game/"+gameId+"/index.html?address="+address} width="644" height="516" id={"game"+gameId}></iframe> : <div></div>}
         
         {
-          (!kob) ? (nfts.length>0) ? <select className="inputkob" onChange={selectKob}><option value="none" default>Select your KOB</option>{nfts.map((nft)=><option key={nft.name} value={nft.name}>{nft.name}</option>)}</select> : (!useRandom) ? <button onClick={playWithRandom} className="button-54 buttonPlay">Play with Random KOB</button> : <div></div> : <div></div>
+          (!kob) ? (nfts.length>0) ? <select className="inputkob" onChange={selectKob}><option value="none" default>Select your KOB</option>{nfts.map((nft)=><option key={nft} value={nft}>{nft}</option>)}</select> : (!useRandom) ? <button onClick={playWithRandom} className="button-54 buttonPlay">Play with Random KOB</button> : <div></div> : <div></div>
         }
 
     </div>

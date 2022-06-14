@@ -18,8 +18,8 @@ li div{
     padding:5px;
     flex-grow: 1;
     text-align: center;
-	font-family: pixelart;
-	font-size:13pt;
+	font-family: Gugi;
+	font-size:10pt;
 }
 
 li{
@@ -45,16 +45,71 @@ a {
 /* container */
 .containerLeaderboard {
 	width: 100%;
-	padding: 20px 100px;
+	padding: 40px 20vw;
 	height: auto;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	z-index: 1;
 	overflow: hidden;
+}
+
+.leaderboardSearchbar{
+	width:100%;
+	padding:20px;
+	background-color: white;
+	border-radius: 7px;
+	display:flex;
+	align-items: center;
+}
+
+.leaderboardSearchbarControls{
+	position:relative;
+	min-width:50%;
+	height:32px;
+	display:flex;
+	align-items: center;
+	font-family: Gugi;
+	cursor:default;
+	padding-left:42px;
+}
+
+.leaderboardSearchbarControlsIcon{
+	position: absolute;
+	left: -5px;
+	top: -5px;
+	width:42px;
+	height:42px;
+	overflow: hidden;
+	background-color: white;
+	padding:5px;
+	border-radius:10px;
+}
+
+.leaderboardSearchbarControlsIcon:hover{
+	height:fit-content;
+	top:-5px;
+}
+
+.leaderboardSearchbarControlsIcon img{
+	height: 32px;
+	cursor:pointer;
+}
+
+.leaderboardSearchbarWrapper{
+	width:100%;
+}
+
+.leaderboardSearchbarControls input{
+	width:100%;
+	max-width: 300px;
+	padding:10px;
+	font-family: Gugi;
+	border-radius:10px;
+	border:1px solid lightgray;
 }
 
 /* leaderboard */
 .leaderboard {
 	background: transparent;
+	margin-top:20px;
 }
 
 /* head */
@@ -73,7 +128,8 @@ a {
 .bodyLeaderboard {
     overflow-y: scroll;
     height: 270px;
-	border:2px solid white;
+	background-color: white;
+	border-radius:7px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -88,7 +144,7 @@ scrollbar-width: none;  /* Firefox */
 }
 
 .leaderboard .bodyLeaderboard {
-	color: snow;
+	color: black;
 	font-size: 16px;
 }
 .leaderboard ol {
@@ -111,4 +167,16 @@ ol li:nth-child(1) {
 
 .rankingHeader{
     list-style: none;
+}
+
+.rankingListItem{
+
+}
+
+.rankingListItem:nth-child(odd){
+	background-color: rgb(240, 240, 240);;
+}
+
+.rankingListItem:nth-child(even){
+	background-color: white;
 }

@@ -221,7 +221,7 @@ export default function Main() {
         </div>
 
         <div className='navbar'>
-          <a href="#">P2E GAMES & TOURNAMENTS</a> | <a href="#">LEADERBOARDS</a> | <a href="#">RENT SPACES</a> | <a href="#">MERCHANDISING</a> | <a href="#">MARKETPLACE</a> | <a href="#">ABOUT</a> | <a href="#">TEAM</a> | <a href="#">FAQ</a> | <a href="#">HALL OF FAME</a>
+          <a href="#p2eGameList">P2E GAMES & TOURNAMENTS</a> | <Link to="/leaderboard">LEADERBOARDS</Link> | <a href="#">RENT SPACES</a> | <a href="#">MERCHANDISING</a> | <a href="#tradingBricksList">MARKETPLACE</a> | <a href="#">ABOUT</a> | <a href="#">TEAM</a> | <a href="#">FAQ</a> | <a href="#">HALL OF FAME</a>
         </div>
 
         <div className='mainDestaquesContainer'>
@@ -319,7 +319,7 @@ export default function Main() {
             <div className='catalogTopbarWrap'></div>
           </div>
 
-          <div className='p2eGameList'>
+          <div className='p2eGameList' id="p2eGameList">
             <div className='p2eGameListItem'>
               <div className='p2eGameListItemCard'>
                 <div className='p2eGameListItemCardImageContainer'>
@@ -400,7 +400,7 @@ export default function Main() {
             <div className='catalogTopbarViewAll'><button onClick={()=>{setViewAllReleases(!viewAllReleases)}}> {(!viewAllReleases) ? "VIEW ALL +" : "VIEW LESS -"} </button></div>
           </div>
 
-          <div className='p2eGameList'>
+          <div className='p2eGameList' id="tradingBricksList">
             <div className='p2eGameListItem'>
               <div className='p2eGameListItemCard'>
                 <div className='p2eGameListItemCardImageContainer'>

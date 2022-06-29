@@ -96,12 +96,15 @@ import game44_hover from './assets/game44_hover.png';
 import discord_icon from './assets/discord_icon.png';
 import twitter_icon from './assets/twitter_icon.png';
 import jpg_icon from './assets/jpg_icon.png';
-import search_icon from './assets/searchIcon.png';
 import advertiseHere1 from './assets/advertiseHere1-01.svg';
-import mainPageBanner from './assets/mainPageBanner_1.jpg';
-import p2egame from './assets/p2egame.png';
-import unknownBrick from './assets/unknownBrick.png';
+import mainPageBanner from './assets/mainPageBanner_1.png';
 import footerBanner from './assets/footerBanner.png';
+
+// roadmap
+import roadmap1 from './assets/roadmap1.png';
+import roadmap2 from './assets/roadmap2.png';
+import roadmap3 from './assets/roadmap3.png';
+import roadmap4 from './assets/roadmap4.png';
 
 // wallet icons
 import namiWalletIcon from './assets/namiWallet.png';
@@ -221,12 +224,11 @@ export default function Main() {
         </div>
 
         <div className='navbar'>
-          <a href="#p2eGameList">P2E GAMES & TOURNAMENTS</a> | <Link to="/leaderboard">LEADERBOARDS</Link> | <a href="#">RENT SPACES</a> | <a href="#">MERCHANDISING</a> | <a href="#tradingBricksList">MARKETPLACE</a> | <a href="#">ABOUT</a> | <a href="#">TEAM</a> | <a href="#">FAQ</a> | <a href="#">HALL OF FAME</a>
+          <Link to="/leaderboard">LEADERBOARDS</Link> | <a href="#rentSpaces">RENT SPACES</a> | <a href="#roadmap">ROADMAP</a> | <a href="#team">TEAM</a> | <a href="#faq">FAQ</a> | <a href="#hallOfFame">HALL OF FAME</a>
         </div>
 
         <div className='mainDestaquesContainer'>
           <div className='mainDestaques' style={{backgroundImage: "url("+mainPageBanner+")"}}>
-            <div className='Badge0Holder' style={{bottom:"40px", right:"84px"}}>0+ Holders</div>
             {/* image here */}
           </div>
         </div>
@@ -245,7 +247,6 @@ export default function Main() {
                   <div className='catalogListItemCardHover' style={{background:"linear-gradient(to top, #000, transparent)"}}>
                     {el[1]}
                   </div>
-                  <div className={'Badge'+el[3]+'Holder'} style={{bottom:"0px", right:"0px", borderRadius:"10px 0px 10px 0px", fontSize:"10pt", padding:"5px 15px"}}>{el[3]}+ Holders</div>
                 </div>
               </div></Link> : (viewAll) ? <Link to={ "/game/"+el[0] } key={"gameCard_"+el[0]}><div className='catalogListItem'>
                 <div className='catalogListItemCard'>
@@ -253,7 +254,6 @@ export default function Main() {
                   <div className='catalogListItemCardHover' style={{background:"linear-gradient(to top, #000, transparent)"}}>
                     {el[1]}
                   </div>
-                  <div className={'Badge'+el[3]+'Holder'} style={{bottom:"0px", right:"0px", borderRadius:"10px 0px 10px 0px", fontSize:"10pt", padding:"5px 15px"}}>{el[3]}+ Holders</div>
                 </div>
               </div></Link> : <div></div>
             )}
@@ -286,7 +286,6 @@ export default function Main() {
                   <div className='nextReleasesListItemCardTitle'>{el[0]}</div>
                   <div className='nextReleasesListItemCardSubtitle'>Arcade</div>
                   <div className='nextReleasesListItemCardWrapper'></div>
-                  <div className={"nextReleasesListItemCardHolders Badge"+el[3]+"Holder"}>{el[3]}+ Holders</div>
                 </div>
               </div> : (viewAllReleases && i>=playNow.length) ? <div key={"releaseCard_"+i} className='nextReleasesListItem'>
                 <div className='nextReleasesListItemCard'>
@@ -296,7 +295,6 @@ export default function Main() {
                   <div className='nextReleasesListItemCardTitle'>{el[0]}</div>
                   <div className='nextReleasesListItemCardSubtitle'>Arcade</div>
                   <div className='nextReleasesListItemCardWrapper'></div>
-                  <div className={"nextReleasesListItemCardHolders Badge"+el[3]+"Holder"}>{el[3]}+ Holders</div>
                 </div>
               </div> : <div style={{display:"none"}}></div>
             )}
@@ -313,156 +311,125 @@ export default function Main() {
               <img src={advertiseHere1}/>
             </div>
           </div>
+          
+          <div className='catalogTopbar' id="rentSpaces">
+            <div className='catalogTopbarTitle'>Rent Spaces</div>
+            <div className='catalogTopbarWrap'></div>
+            <div className='catalogTopbarViewAll'>
+              <a href="https://twitter.com/kindoabrick" target="_blank"><img src={twitter_icon} /></a>
+              <a href="https://discord.gg/bFCWaSRTXq" target="_blank"><img src={discord_icon} /></a>
+            </div>
+          </div>
+          <div className='rentSpacesContainer'>
+            Kind of a Brick promotes NFT projects and companies by advertising them on our Gaming Billboards. This Billboards will be seen by thousands of enthusiastic gamers during Gaming Contests.<br></br><br></br>
+            If you're interested on renting a Billboard from one of our Games, please contact us via Twitter or Discord.<br></br><br></br>
+            Use the links above.
+          </div>
 
-          <div className='catalogTopbar'>
-            <div className='catalogTopbarTitle'>Cardano Projects P2E Games</div>
+          <div className='catalogTopbar' id="roadmap">
+            <div className='catalogTopbarTitle'>Roadmap</div>
             <div className='catalogTopbarWrap'></div>
           </div>
-
-          <div className='p2eGameList' id="p2eGameList">
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={p2egame}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Project Name</div>
-                <div className='p2eGameListItemCardSubtitle'>Game Name</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>10 WL Spots</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={p2egame}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Project Name</div>
-                <div className='p2eGameListItemCardSubtitle'>Game Name</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>Free Mint</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={p2egame}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Project Name</div>
-                <div className='p2eGameListItemCardSubtitle'>Game Name</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>5 Free Mints</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={p2egame}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Project Name</div>
-                <div className='p2eGameListItemCardSubtitle'>Game Name</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>25 WL Spots</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={p2egame}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Project Name</div>
-                <div className='p2eGameListItemCardSubtitle'>Game Name</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>Special NFT</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={p2egame}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Project Name</div>
-                <div className='p2eGameListItemCardSubtitle'>Game Name</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>$100 Token</div>
-              </div>
-            </div>
+          <div className='roadmapContainer'>
+            <img src={roadmap1}/>
+            <img src={roadmap2}/>
+            <img src={roadmap3}/>
+            <img src={roadmap4}/>
           </div>
 
-          <div className='catalogAdvertisement'>
-            <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
-            </div>
-            <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
-            </div>
-            <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
-            </div>
-          </div>
-
-          <div className='catalogTopbar'>
-            <div className='catalogTopbarTitle'>Trading Bricks</div>
+          <div className='catalogTopbar' id="faq">
+            <div className='catalogTopbarTitle'>FAQ</div>
             <div className='catalogTopbarWrap'></div>
-            <div className='catalogTopbarViewAll'><button onClick={()=>{setViewAllReleases(!viewAllReleases)}}> {(!viewAllReleases) ? "VIEW ALL +" : "VIEW LESS -"} </button></div>
+          </div>
+          <div className='rentSpacesContainer'>
+            <div className='hallOfFameTitle'>How many Kind of a Bricks are there?</div>
+            There are 5000 KOBs total. In the collection you will find 10 Animated KOBs and 20 1/1 specials. 
+
+            <div className='hallOfFameTitle'>When is the Brick Drop? </div>
+            First Drop was on March, 27th. Resume of the mint will happen ASAP.
+
+            <div className='hallOfFameTitle'>How much is mint price?</div>
+            25 ADA
+
+            <div className='hallOfFameTitle'>Where can I buy? </div>
+            A minting address will be posted on <a href="https://discord.gg/bFCWaSRTXq" target="_blank" style={{color:"#e7530b"}}>Discord</a> when resuming the mint.
+
+            <div className='hallOfFameTitle'>Is there a whitelist?</div>
+            No. When the resume of the mint, there will be no WL. 
+
+            <div className='hallOfFameTitle'>How many can I buy per transaction? </div>
+            10 KOBs per transaction limit.
+            No limit per wallet.
+
+            <div className='hallOfFameTitle'>Compatible wallets?</div>
+            Only send your ADA via Yoroi/Daedalus/Nami wallets. Do not send money from any CEX like Coinbase, Binance, Kucoin etc. Your asset would be lost and I won't be able to refund you.
+
+            <div className='hallOfFameTitle'>What if I buy and they're all sold out? </div>
+            Don't start throwing bricks at me, refunds will be automatically processed. 
+
+            <div className='hallOfFameTitle'>What is the rarity of my KOB? </div>
+            You can check rarities and rankings on cnft.tools.
+
+            <div className='hallOfFameTitle'>What is the policy id?</div>
+            e00352bf7e5623ab63afb8cf05b3ee1e90bd8af9457bba9f28a7c8b6
+
+            <div className='hallOfFameTitle'>Can I buy on the secondary market? </div>
+            Yes, we are verified on the main Cardano marketplaces.
+
+            <div className='hallOfFameTitle'>What do I get from holding KOBs?</div>
+            Apart from the amazing and funny art, holding KOBs will give you the oportunity to win up to 33.000 ADA in 33 different gaming contests for 1000 ADA each.
+            When finalized the last contest, holding KOBs will still be very much profitable. Check <a href="#roadmap" style={{color:"#e7530b"}}>Roadmap</a>
           </div>
 
-          <div className='p2eGameList' id="tradingBricksList">
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={unknownBrick}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Unknow Brick</div>
-                <div className='p2eGameListItemCardSubtitle'>Scoring Point: 0</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>0 ADA</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={unknownBrick}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Unknow Brick</div>
-                <div className='p2eGameListItemCardSubtitle'>Scoring Point: 0</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>0 ADA</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={unknownBrick}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Unknow Brick</div>
-                <div className='p2eGameListItemCardSubtitle'>Scoring Point: 0</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>0 ADA</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={unknownBrick}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Unknow Brick</div>
-                <div className='p2eGameListItemCardSubtitle'>Scoring Point: 0</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>0 ADA</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={unknownBrick}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Unknow Brick</div>
-                <div className='p2eGameListItemCardSubtitle'>Scoring Point: 0</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>0 ADA</div>
-              </div>
-            </div>
-            <div className='p2eGameListItem'>
-              <div className='p2eGameListItemCard'>
-                <div className='p2eGameListItemCardImageContainer'>
-                  <img className='p2eGameListItemCardImage' src={unknownBrick}/>
-                </div>
-                <div className='p2eGameListItemCardTitle'>Unknow Brick</div>
-                <div className='p2eGameListItemCardSubtitle'>Scoring Point: 0</div>
-                <div className={"p2eGameListItemCardHolders Badge3Holder"}>0 ADA</div>
-              </div>
-            </div>
+          <div className='catalogTopbar' id="team">
+            <div className='catalogTopbarTitle'>TEAM</div>
+            <div className='catalogTopbarWrap'></div>
+          </div>
+          <div className='rentSpacesContainer'>
+            <div className='hallOfFameTitle'>Former team of Kind of a Brick</div>
+
+            Kind of a Brick begun with a 4 member team. <br></br>
+            <ol>
+              <li style={{color:"rgb(200, 200, 200)"}}>1. andrefmc</li>
+              <li>2. MiguelBM</li>
+              <li>3. cnft.collector | KOB</li>
+              <li>4. Kodart | KOB</li>
+            </ol>
+
+            <div className='hallOfFameTitle'>DOXXED</div>
+            On March, 24th both Kodart and cnft.collector got DOXXED on that day's AMA.
+
+            <div className='hallOfFameTitle'>Kodart takes over</div>
+            After the pause of minting, I took over the project and became the solo owner of Kind of a Brick.
+
+            <div className='hallOfFameTitle'>Who is Kodart?</div>
+            I was born in 1986, so I'm 36 at the time of this description.<br></br><br></br>
+            Studied to become a veterinary medicine and completed my Masters in 2011.<br></br><br></br>
+            After working in my city Zoological Park, I moved to Alentejo and started a farming project of chestnut trees.<br></br><br></br>
+            At the same time, I got interested in art and begun learning how to use Photoshop. I also learned robotics and some coding to achieve a very unique kind of art.<br></br><br></br>
+            In 2021/2022, I spent some time building a gigantic robot that can draw on a white sheet, using different coloured markers. This is very pioneering and it's in constant improvement and experimentation. Check my Instagram account for more: https://www.instagram.com/kodart._<br></br><br></br>
+            In the end of 2021, I was invited by cnft.collector to create the art of Kind of a Brick. The rest you already know.
+          </div>
+
+          <div className='catalogTopbar' id="hallOfFame">
+            <div className='catalogTopbarTitle'>HALL OF FAME</div>
+            <div className='catalogTopbarWrap'></div>
+          </div>
+          <div className='rentSpacesContainer'>
+            <div className='hallOfFameTitle'>Racing Masters</div>
+            Holder of Brick 529 won a Boss Cat Rocket Club NFT by getting the best time at Racing Masters on our Gaming Center (111.65 points, twice).
+            This competition ended on 14/04/2022 and was played by over 400 different people who scored over 9000 results into our database.
+
+            <div className='hallOfFameTitle'>Tower Building</div>
+            Holder of Brick 1709 won a Smooth Yeti Mountain Club NFT by getting the best score at Tower Building on our Gaming Center. He got 18975 points.
+            This competition ended on 08/05/2022 and was played by over 250 different people who scored over 15000 results into our database.
+
+
+            More HALL OF FAME Bricks are yet to come!
           </div>
         </div>
+
+        
 
         <div className='mainDestaquesContainer' style={{paddingTop:"50px", paddingLeft:"0px", paddingRight:"0px"}}>
           <div className='mainDestaques'>
@@ -478,7 +445,7 @@ export default function Main() {
         
         <div className='initFooter'>
           <a href="https://twitter.com/kindoabrick" target="_blank"><img src={twitter_icon} /></a>
-          <a href="https://discord.gg/kindoabrick" target="_blank"><img src={discord_icon} /></a>
+          <a href="https://discord.gg/bFCWaSRTXq" target="_blank"><img src={discord_icon} /></a>
           <a href="https://www.jpg.store/collection/kindofabrick" target="_blank"><img src={jpg_icon} style={{height:"25px", width:"auto"}} /></a>
         </div>
       </div>

@@ -97,6 +97,11 @@ import discord_icon from './assets/discord_icon.png';
 import twitter_icon from './assets/twitter_icon.png';
 import jpg_icon from './assets/jpg_icon.png';
 import advertiseHere1 from './assets/advertiseHere1-01.svg';
+import advertise1 from './assets/advertise1.png';
+import advertise2 from './assets/advertise2.png';
+import advertise3 from './assets/advertise3.png';
+import advertise4 from './assets/advertise4.png';
+import advertise5 from './assets/advertise5.png';
 import mainPageBanner from './assets/mainPageBanner_1.png';
 import footerBanner from './assets/footerBanner.png';
 
@@ -212,16 +217,16 @@ export default function Main() {
 
   return (
       <div className="container containerMain">
-        <div className='mainContainer'>
+        {/*}<div className='mainContainer'>
           <div className='mainAdvertisements'>
             <div className='mainAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise1}/>
             </div>
             <div className='mainAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise2}/>
             </div>
           </div>
-        </div>
+        </div>{*/}
 
         <div className='navbar'>
           <Link to="/leaderboard">LEADERBOARDS</Link> | <a href="#rentSpaces">RENT SPACES</a> | <a href="#roadmap">ROADMAP</a> | <a href="#team">TEAM</a> | <a href="#faq">FAQ</a> | <a href="#hallOfFame">HALL OF FAME</a>
@@ -261,13 +266,13 @@ export default function Main() {
 
           <div className='catalogAdvertisement'>
             <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise1}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise2}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise3}/>
             </div>
           </div>
 
@@ -302,13 +307,13 @@ export default function Main() {
 
           <div className='catalogAdvertisement'>
             <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise2}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise3}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertiseHere1}/>
+              <img src={advertise1}/>
             </div>
           </div>
           
@@ -431,11 +436,11 @@ export default function Main() {
 
         
 
-        <div className='mainDestaquesContainer' style={{paddingTop:"50px", paddingLeft:"0px", paddingRight:"0px"}}>
+        {/*}<div className='mainDestaquesContainer' style={{paddingTop:"50px", paddingLeft:"0px", paddingRight:"0px"}}>
           <div className='mainDestaques'>
             <img className='mainDestaquesAd' src={advertiseHere1}/>
           </div>
-        </div>
+        </div>{*/}
 
         <div className='mainDestaquesContainer' style={{paddingTop:"50px", paddingLeft:"0px", paddingRight:"0px"}}>
           <div className='mainDestaques'>

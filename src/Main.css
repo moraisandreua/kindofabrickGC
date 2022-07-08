@@ -28,6 +28,7 @@ body{
 }
 
 .containerMain{
+    padding-top:80px;
     background-color:#2D3E50;
 }
 

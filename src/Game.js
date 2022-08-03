@@ -8,6 +8,8 @@ import './Game.css';
 
 export default function Game(props) {
   const params=useParams();
+  const apiURL="http://127.0.0.1:5000"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000
+  const gameURL="http://localhost:8888/GAMECENTER/game"; // https://brickgames.io/game/ // http://localhost:8888/GAMECENTER/game
 
   const [address, setAddress] = useState()
   const [kob, setKob] = useState()
@@ -45,7 +47,7 @@ export default function Game(props) {
     }else{
       setKob(tempkob);
 
-      fetch("https://kindofabrick.pythonanywhere.com/kob/token?kob="+tempkob, {method:"POST"}).then(response=>response.json()).then((data)=>{
+      fetch(apiURL+"/kob/token?kob="+tempkob, {method:"POST"}).then(response=>response.json()).then((data)=>{
         setKobToken(data["token"]);
       })
     }
@@ -78,7 +80,7 @@ export default function Game(props) {
         </div>
       </div>
 
-        {(gameId && kobToken) ? <iframe src={"https://brickgames.io/game/"+gameId+"/index.html?address="+address+"&token="+kobToken} width="644" height="516" id={"game"+gameId}></iframe> : (gameId && useRandom) ? <iframe src={"https://brickgames.io/game/"+gameId+"/index.html?address="+address} width="644" height="516" id={"game"+gameId}></iframe> : <div></div>}
+        {(gameId && kobToken) ? <iframe src={gameURL+gameId+"/index.html?address="+address+"&token="+kobToken} width="644" height="516" id={"game"+gameId}></iframe> : (gameId && useRandom) ? <iframe src={gameURL+gameId+"/index.html?address="+address} width="644" height="516" id={"game"+gameId}></iframe> : <div></div>}
         
         {
           (!kob) ? (nfts.length>0) ? <select className="inputkob" onChange={selectKob}><option value="none" default>Select your KOB</option>{nfts.map((nft)=><option key={nft} value={nft}>{nft}</option>)}</select> : (!useRandom) ? <button onClick={playWithRandom} className="button-54 buttonPlay">Play with Random KOB</button> : <div></div> : <div></div>

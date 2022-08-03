@@ -29,6 +29,7 @@ import typhonWalletIcon from './assets/typhonWallet.png';
 
 export default function General() {
     const [selectedGameId, setSelectedGameId] = useState(0);
+    const apiURL="http://127.0.0.1:5000"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000
 
     const [cardanoFoundWallets, setCardanoFoundWallets] = useState([]);
     const [walletIcons, setWalletIcons] = useState([ ["nami", namiWalletIcon], ["eternl", eternlWalletIcon], ["flint", flintWalletIcon], ["yoroi", yoroiWalletIcon], ["typhoncip30", typhonWalletIcon] ]); // set the order of wallet icons
@@ -178,7 +179,7 @@ export default function General() {
     }
 
     const getNumberKobs = (addr) => {
-        fetch("https://kindofabrick.pythonanywhere.com/assets?address="+addr).then((data)=>data.json()).then((data)=>{
+        fetch(apiURL+"/assets?address="+addr, { mode: 'cors', headers: { 'Access-Control-Allow-Origin':'*' } }).then((data)=>data.json()).then((data)=>{
             setNoKobs(data["no_kobs"]);
 
             var tempKobList = [];

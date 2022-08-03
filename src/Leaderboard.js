@@ -7,6 +7,8 @@ import game3Icon from './assets/hextrisIcon.png';
 import game4Icon from './assets/pacmanIcon.png';
 
 export default function Leaderboard(props) {
+    const apiURL="http://127.0.0.1:5000"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000
+
     const [ranking, setRanking] = useState({});
     const [rankingShow, setRankingShow] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +21,7 @@ export default function Leaderboard(props) {
     }
 
     useEffect(async ()=>{
-        await fetch("https://kindofabrick.pythonanywhere.com/points/filter2").then((response) => response.json()).then((data)=>{
+        await fetch(apiURL+"/points/filter2").then((response) => response.json()).then((data)=>{
             var tempDict = {};
             var limit = (parseInt(props.limit)>=0) ? parseInt(props.limit) : 100000;
 
@@ -61,7 +63,7 @@ export default function Leaderboard(props) {
             setRanking({});
             var termo = e.target.value.toLowerCase().replace("kob", "").replace(" ", "").replace("#", "").trim();
             
-            await fetch("https://kindofabrick.pythonanywhere.com/points/filter2?kob="+termo+"&gameId="+gameInfo[0][2]).then((response) => response.json()).then((data)=>{
+            await fetch(apiURL+"/points/filter2?kob="+termo+"&gameId="+gameInfo[0][2]).then((response) => response.json()).then((data)=>{
                 var tempDict = {};
                 var limit = (parseInt(props.limit)>=0) ? parseInt(props.limit) : 25;
 
@@ -83,7 +85,7 @@ export default function Leaderboard(props) {
     }
 
     const filterGameResults = async (gameId) => {
-        await fetch("https://kindofabrick.pythonanywhere.com/points/filter2?&gameId="+gameId).then((response) => response.json()).then((data)=>{
+        await fetch(apiURL+"/points/filter2?&gameId="+gameId).then((response) => response.json()).then((data)=>{
             var tempDict = {};
             var limit = (parseInt(props.limit)>=0) ? parseInt(props.limit) : 25;
 

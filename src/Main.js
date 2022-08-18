@@ -189,7 +189,8 @@ export default function Main() {
     ["1","Racing Masters",game1,3],
     ["2","Tower Building",game2,1],
     ["3","Hextris",game9,1],
-    ["4","Kind of Pacman",game44,0]
+    ["4","Kind of Pacman",game44,0],
+    ["5","HexGL",game5,0]
   ]
 
   useEffect(()=>{

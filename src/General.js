@@ -29,7 +29,7 @@ import typhonWalletIcon from './assets/typhonWallet.png';
 
 export default function General() {
     const [selectedGameId, setSelectedGameId] = useState(0);
-    const apiURL="http://127.0.0.1:5000"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000
+    const apiURL="https://skillskopeserver.hopto.org:5001"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000 // https://skillskopeserver.hopto.org:5001
 
     const [cardanoFoundWallets, setCardanoFoundWallets] = useState([]);
     const [walletIcons, setWalletIcons] = useState([ ["nami", namiWalletIcon], ["eternl", eternlWalletIcon], ["flint", flintWalletIcon], ["yoroi", yoroiWalletIcon], ["typhoncip30", typhonWalletIcon] ]); // set the order of wallet icons

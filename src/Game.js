@@ -4,12 +4,13 @@ import game1 from './assets/game1.png';
 import game2 from './assets/game2.png';
 import game9 from './assets/game9.png';
 import game44 from './assets/game44.png';
+import game5 from './assets/game5.png';
 import './Game.css';
 
 export default function Game(props) {
   const params=useParams();
-  const apiURL="http://127.0.0.1:5000"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000
-  const gameURL="http://localhost:8888/GAMECENTER/game"; // https://brickgames.io/game/ // http://localhost:8888/GAMECENTER/game
+  const apiURL="https://skillskopeserver.hopto.org:5001"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000 // https://skillskopeserver.hopto.org:5001/
+  const gameURL="https://brickgames.io/game/"; // https://brickgames.io/game/ // http://localhost:8888/GAMECENTER/game
 
   const [address, setAddress] = useState()
   const [kob, setKob] = useState()
@@ -19,16 +20,17 @@ export default function Game(props) {
   const [useRandom, setUseRandom] = useState(false)
   const [showGameHover, setShowGameHover] = useState(true)
 
-  const availableGames=["1", "2", "3", "4"];
   const aGames=[
     ["0","Loading","",0,"loading..."],
     ["1","Racing Masters",game1,3, "description"],
     ["2","Tower Building",game2,1, "description"],
     ["3","Hextris",game9,1, "description"],
-    ["4","Kind of Pacman",game44,0, "description"]
+    ["4","Kind of Pacman",game44,0, "description"],
+    ["5","HexGL",game5,0, "description"]
   ];
 
   useEffect(()=>{
+    console.log(params.id)
     setAddress(props.address);
     setKob(props.kob);
     setNfts(props.listOfKobs);

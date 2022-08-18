@@ -5,14 +5,15 @@ import game1Icon from './assets/racingMastersIcon.png';
 import game2Icon from './assets/towerBuildingIcon.png';
 import game3Icon from './assets/hextrisIcon.png';
 import game4Icon from './assets/pacmanIcon.png';
+import game5Icon from './assets/hexglIcon.png';
 
 export default function Leaderboard(props) {
-    const apiURL="http://127.0.0.1:5000"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000
+    const apiURL="https://skillskopeserver.hopto.org:5001"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000 // https://skillskopeserver.hopto.org:5001
 
     const [ranking, setRanking] = useState({});
     const [rankingShow, setRankingShow] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
-    const [gameInfo, setGameInfo] = useState([ ["Select the game", gameIcon, 0],["Racing Masters", game1Icon, 1],["Tower Building", game2Icon, 2],["Hextris", game3Icon, 3],["Pacman", game4Icon, 4] ]);
+    const [gameInfo, setGameInfo] = useState([ ["Select the game", gameIcon, 0],["Racing Masters", game1Icon, 1],["Tower Building", game2Icon, 2],["Hextris", game3Icon, 3],["Pacman", game4Icon, 4],["HexGl", game5Icon, 5] ]);
 
     const selectIconFilter = (name) => {
         var temp = gameInfo.filter((el)=>el[0]==name).concat(gameInfo.filter((el)=>el[0]!=name));
@@ -26,7 +27,7 @@ export default function Leaderboard(props) {
             var limit = (parseInt(props.limit)>=0) ? parseInt(props.limit) : 100000;
 
             if(data.length==0){
-                tempDict[data[i]["game"]]=[{"address":"no", "kob":"plays", "points":"yet"}];
+                tempDict[0]=[{"address":"no", "kob":"plays", "points":"yet"}];
             }else{
                 for(var i=0; i<data.length; i++){
                     if(!Object.keys(tempDict).includes(data[i]["game"])){
@@ -90,7 +91,7 @@ export default function Leaderboard(props) {
             var limit = (parseInt(props.limit)>=0) ? parseInt(props.limit) : 25;
 
             if(data.length==0){
-                tempDict[data[i]["game"]]=[{"address":"no", "kob":"plays", "points":"yet"}];
+                tempDict[0]=[{"address":"no", "kob":"plays", "points":"yet"}];
             }else{
                 for(var i=0; i<data.length; i++){
                     if(!Object.keys(tempDict).includes(data[i]["game"])){

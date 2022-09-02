@@ -6,6 +6,8 @@ import game2Icon from './assets/towerBuildingIcon.png';
 import game3Icon from './assets/hextrisIcon.png';
 import game4Icon from './assets/pacmanIcon.png';
 import game5Icon from './assets/hexglIcon.png';
+import game6Icon from './assets/onOffIcon.png';
+import game7Icon from './assets/duckHuntIcon.png';
 
 export default function Leaderboard(props) {
     const apiURL="https://skillskopeserver.hopto.org:5001"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000 // https://skillskopeserver.hopto.org:5001
@@ -13,7 +15,7 @@ export default function Leaderboard(props) {
     const [ranking, setRanking] = useState({});
     const [rankingShow, setRankingShow] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
-    const [gameInfo, setGameInfo] = useState([ ["Select the game", gameIcon, 0],["Racing Masters", game1Icon, 1],["Tower Building", game2Icon, 2],["Hextris", game3Icon, 3],["Pacman", game4Icon, 4],["HexGl", game5Icon, 5] ]);
+    const [gameInfo, setGameInfo] = useState([ ["Select the game", gameIcon, 0],["Racing Masters", game1Icon, 1],["Tower Building", game2Icon, 2],["Hextris", game3Icon, 3],["Pacman", game4Icon, 4],["HexGl", game5Icon, 5], ["OnOff", game6Icon, 6], ["Duck Hunt", game7Icon, 7] ]);
 
     const selectIconFilter = (name) => {
         var temp = gameInfo.filter((el)=>el[0]==name).concat(gameInfo.filter((el)=>el[0]!=name));

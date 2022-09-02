@@ -93,6 +93,8 @@ import game43 from './assets/game43.png';
 import game43_hover from './assets/game43_hover.png';
 import game44 from './assets/game44.png';
 import game44_hover from './assets/game44_hover.png';
+import game45 from './assets/game45.png';
+
 import discord_icon from './assets/discord_icon.png';
 import twitter_icon from './assets/twitter_icon.png';
 import jpg_icon from './assets/jpg_icon.png';
@@ -102,7 +104,7 @@ import advertise2 from './assets/advertise2.png';
 import advertise3 from './assets/advertise3.png';
 import advertise4 from './assets/advertise4.png';
 import advertise5 from './assets/advertise5.png';
-import mainPageBanner from './assets/mainPageBanner_1.png';
+import mainPageBanner from './assets/mainPageBanner_1.jpg';
 import footerBanner from './assets/footerBanner.png';
 
 // roadmap
@@ -123,7 +125,10 @@ import blockfrostApiKey from '../config.js';
 let nami;
 
 export default function Main() {
+  const apiURL="https://skillskopeserver.hopto.org:5001"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000 // https://skillskopeserver.hopto.org:5001
+
   const [walletIcons, setWalletIcons] = useState([ ["nami", namiWalletIcon], ["eternl", eternlWalletIcon], ["flint", flintWalletIcon], ["yoroi", yoroiWalletIcon], ["typhon", typhonWalletIcon] ]); // set the order of wallet icons
+  
   const [viewAll, setViewAll] = useState(false)
   const [viewAllReleases, setViewAllReleases] = useState(false)
 
@@ -137,6 +142,13 @@ export default function Main() {
   const [previousChoosenGame, setPreviousChoosenGame] = useState(false)
   const [particlesOff, setParticlesOff] = useState(false)
 
+  const [ad1, setAd1] = useState(null)
+  const [ad2, setAd2] = useState(null)
+  const [ad3, setAd3] = useState(null)
+  const [ad4, setAd4] = useState(null)
+  const [ad5, setAd5] = useState(null)
+  const [ad6, setAd6] = useState(null)
+
   // game -> name, foto, fotoHover, holding number, category
   const games=[
     ["Racing Masters", game1, game1_hover,1],
@@ -144,6 +156,8 @@ export default function Main() {
     ["Hextris", game9, game9_hover,0],
     ["Pacman", game44, game44_hover,15],
     ["HexGL", game5, game5_hover,0],
+    ["OnOff", game45, game45,0],
+    ["Duck Hunt", game16, game16_hover,3],
     ["Mimstris", game6, game6_hover,3],
     ["Astray", game7, game7_hover,15],
     ["Clumsy Bird", game8, game8_hover,1],
@@ -154,7 +168,6 @@ export default function Main() {
     ["Circus Charly", game13, game13_hover,3],
     ["Breaklock", game14, game14_hover,0],
     ["Diablo-JS", game15, game15_hover,15],
-    ["Duck Hunt", game16, game16_hover,3],
     ["Minesweeper", game17, game17_hover,1],
     ["Infinite Mario", game18, game18_hover,0],
     ["Tap Tap Adventure", game19, game19_hover,15],
@@ -190,31 +203,42 @@ export default function Main() {
     ["2","Tower Building",game2,1],
     ["3","Hextris",game9,1],
     ["4","Kind of Pacman",game44,0],
-    ["5","HexGL",game5,0]
+    ["5","HexGL",game5,0],
+    ["6","OnOff",game45,0]
+    ["7","Duck Hunt",game16,0]
   ]
 
+  const getAds = () => {
+    fetch(apiURL+"/advertisement").then((data)=>data.json()).then((data)=>{
+        if(data["1"])
+          setAd1(data["1"]);
+
+        if(data["2"])
+          setAd2(data["2"]);
+
+        if(data["3"])
+          setAd3(data["3"]);
+
+        if(data["4"])
+          setAd4(data["4"]);
+
+        if(data["5"])
+          setAd5(data["5"]);
+
+        if(data["6"])
+          setAd6(data["6"]);
+    })
+  }
+
   useEffect(()=>{
+    getAds();
+
     window.addEventListener("keydown", function(e) {
       if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
           e.preventDefault();
       }
     }, false);
   }, []);
-
-  const scrollIntoView = (e) =>{
-      e.preventDefault();
-
-      document.querySelector(e.target.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-      });
-  }
-
-  const selectWalletToConnect= (walletName) => {
-    var temp=[]
-    walletIcons.map((el) => {if(el[0]==walletName) temp.push(el)});
-    walletIcons.map((el) => {if(el[0]!=walletName) temp.push(el)});
-    setWalletIcons(temp);
-  }
 
   return (
       <div className="container containerMain">

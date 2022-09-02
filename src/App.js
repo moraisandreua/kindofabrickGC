@@ -224,7 +224,7 @@ export default function App() {
                         </div>
 
 
-                        {nfts.map((nft) => {
+                        {/*nfts.map((nft) => {
                             return <><div className="item nft"><p>unit: {nft.unit}</p>
                                 <p>quantity: {nft.quantity}</p>
                                 <p>policy: {nft.policy}</p>
@@ -233,7 +233,7 @@ export default function App() {
                             </div>
                             </>
 
-                        })}
+                        })*/}
                     </div>
                     </>
                     }

@@ -19,6 +19,8 @@ import Leaderboard from './Leaderboard';
 import logo from './assets/logotype.png';
 import search_icon from './assets/searchIcon.png';
 import noKobs_icon from './assets/noKobs.png';
+import loadingKobNumbers from './assets/loadingKobNumber.gif';
+import loadingAddress from './assets/loadingAddress.gif';
 
 // wallet icons
 import namiWalletIcon from './assets/namiWallet.png';
@@ -46,22 +48,39 @@ export default function General() {
     const [noKobs, setNoKobs] = useState(0)
     const [kobList, setKobList] = useState([])
 
+    const [searchingForKobs, setSearchingForKobs] = useState(false);
+    const [searchingForAddress, setSearchingForAddress] = useState(false);
+
+    const [ipAddress, setIpAddress] = useState(null)
+
     const [apikey, setApiKey] = useState(undefined);
 
     var API = null;
       
     const pollWallets = (count = 0) => {
+        if(count==0){
+            setSearchingForAddress(true);
+        }
+
         const wallets = [];
         for(const key in window.cardano) {
             if (window.cardano[key].enable && wallets.indexOf(key) === -1) {
                 wallets.push(key);
             }
         }
-        if (wallets.length === 0 && count < 3) {
+        if (count < 3) {
             setTimeout(() => {
-                this.pollWallets(count + 1);
+                pollWallets(count + 1);
             }, 1000);
-            return;
+            //return;
+        }
+
+        if(count==3){
+            setSearchingForAddress(false);
+            if (localStorage.getItem("lastUsedWallet") !== null) {
+                setWhichWalletSelected(localStorage.getItem("lastUsedWallet"))
+                orderWalletIcons(localStorage.getItem("lastUsedWallet"));
+            }
         }
         
         setCardanoFoundWallets(wallets);
@@ -96,6 +115,7 @@ export default function General() {
     const checkIfWalletFound = () => {
         const walletKey = whichWalletSelected;
         const walletFound = !!window?.cardano?.[walletKey];
+        console.log(window.cardano)
         setWalletFound(walletFound);
         return walletFound;
     }
@@ -152,35 +172,49 @@ export default function General() {
     }
 
     const refreshData = async () => {
+        //console.log("ola1")
+        setSearchingForAddress(true);
+        //console.log("ola2")
 
         try{
+            //console.log("ola3.1")
             const walletFound = checkIfWalletFound();
             if (walletFound) {
+                //console.log("ola4.1")
                 await getAPIVersion();
                 await getWalletName();
                 const walletEnabled = await enableWallet();
                 if (walletEnabled) {
+                    //console.log("ola5.1")
                     await getBalance();
                     await getUsedAddresses();
                     
                 } else {
+                    //console.log("ola5.2")
                     setBalance(null);
                     setUsedAddress(null);
                 }
             } else {
+                //console.log("ola4.2")
                 setWalletIsEnabled(false);
 
                 setBalance(null);
                 setUsedAddress(null);
             }
         } catch (err) {
+            //console.log("ola3.2")
             console.log(err)
         }
+
+        setSearchingForAddress(false);
     }
 
     const getNumberKobs = (addr) => {
+        setSearchingForKobs(true);
+
         fetch(apiURL+"/assets?address="+addr, { mode: 'cors', headers: { 'Access-Control-Allow-Origin':'*' } }).then((data)=>data.json()).then((data)=>{
             setNoKobs(data["no_kobs"]);
+            setSearchingForKobs(false);
 
             var tempKobList = [];
             for(var i=0; i<data["kobList"].length; i++){
@@ -192,12 +226,10 @@ export default function General() {
     }
 
     useEffect(()=>{
-        
+
         pollWallets();
-        if (localStorage.getItem("lastUsedWallet") !== null) {
-            setWhichWalletSelected(localStorage.getItem("lastUsedWallet"))
-            orderWalletIcons(localStorage.getItem("lastUsedWallet"));
-        }
+            
+        fetch("https://api.ipify.org?format=json").then((data)=>{return data.json()}).then(data=>setIpAddress(data["ip"])).catch(()=>{console.log("there was an error on getting user's IP")});
     }, []);
 
     useEffect(()=>{
@@ -217,8 +249,8 @@ export default function General() {
             </div>
             <div className='topbarFlexWrapper'></div>
             <div className='topbarControlsContainer'>
-                <div className='topbarControlsContainerBadge'>{noKobs}<img src={noKobs_icon}/></div>
-                <span className='topbarConnectTitle' >{ (walletIsEnabled) ? usedAddressShortened : "connect " }</span>
+                <div className='topbarControlsContainerBadge'>{(!searchingForKobs) ? noKobs : <img src={loadingKobNumbers}/>}<img src={noKobs_icon}/></div>
+                <span className='topbarConnectTitle' >{ (searchingForAddress) ? <img height="34px" src={loadingAddress}/> : (walletIsEnabled) ? usedAddressShortened : "connect " }</span>
                 <div className='topbarConnectSelect'>
                 {
                     walletIcons.map((el) => { return <img key={el[1]+"WalletIcon"} src={el[1]} onClick={() => {setWhichWalletSelected(el[0]); orderWalletIcons(el[0])}}/>})
@@ -234,7 +266,7 @@ export default function General() {
             
             <Switch>
                 <Route exact path='/'><Main setGameId={setSelectedGameId}/></Route>
-                <Route exact path='/game/:id'><Game address={usedAddress} listOfKobs={kobList} gameId={selectedGameId} /></Route>
+                <Route exact path='/game/:id'><Game address={usedAddress} listOfKobs={kobList} gameId={selectedGameId} ipAddress={ipAddress}/></Route>
                 <Route exact path='/leaderboard'><Leaderboard /></Route>
             </Switch>
             </Router>

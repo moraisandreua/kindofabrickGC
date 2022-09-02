@@ -204,7 +204,7 @@ export default function Main() {
     ["3","Hextris",game9,1],
     ["4","Kind of Pacman",game44,0],
     ["5","HexGL",game5,0],
-    ["6","OnOff",game45,0]
+    ["6","OnOff",game45,0],
     ["7","Duck Hunt",game16,0]
   ]
 
@@ -291,13 +291,13 @@ export default function Main() {
 
           <div className='catalogAdvertisement'>
             <div className='catalogAdvertisementCard'>
-              <img src={advertise1}/>
+              <img src={(ad1) ? ad1 : advertise1}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertise2}/>
+              <img src={(ad2) ? ad2 : advertise2}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertise3}/>
+              <img src={(ad3) ? ad3 : advertise3}/>
             </div>
           </div>
 
@@ -332,13 +332,13 @@ export default function Main() {
 
           <div className='catalogAdvertisement'>
             <div className='catalogAdvertisementCard'>
-              <img src={advertise2}/>
+              <img src={(ad4) ? ad4 : advertise3}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertise3}/>
+              <img src={(ad5) ? ad5 : advertise1}/>
             </div>
             <div className='catalogAdvertisementCard'>
-              <img src={advertise1}/>
+              <img src={(ad6) ? ad6 : advertise2}/>
             </div>
           </div>
           

@@ -88,7 +88,7 @@ export default function Game(props) {
         </div>
       </div>
 
-        {(gameId && kobToken) ? <iframe src={gameURL+gameId+"/index.html?address="+address+"&token="+kobToken+"&ip_address="+ipAddress} width="644" height="516" id={"game"+gameId}></iframe> : (gameId && useRandom) ? <iframe src={gameURL+gameId+"/index.html?address="+address+"&ip_address="+ipAddress} width="644" height="516" id={"game"+gameId}></iframe> : <div></div>}
+        {(gameId && kobToken) ? <iframe src={gameURL+gameId+"/index.html?address="+address+"&token="+kobToken+"&ip_address="+ipAddress} width="811" height="650" id={"game"+gameId}></iframe> : (gameId && useRandom) ? <iframe src={gameURL+gameId+"/index.html?address="+address+"&ip_address="+ipAddress} width="811" height="650" id={"game"+gameId}></iframe> : <div></div>}
         
         {
           (!kob) ? (nfts.length>0) ? <select className="inputkob" onChange={selectKob}><option value="none" default>Select your KOB</option>{nfts.map((nft)=><option key={nft} value={nft}>{nft}</option>)}</select> : (!useRandom) ? <button onClick={playWithRandom} className="button-54 buttonPlay">Play with Random KOB</button> : <div></div> : <div></div>

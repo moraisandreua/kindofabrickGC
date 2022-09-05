@@ -8,6 +8,10 @@ import game4Icon from './assets/pacmanIcon.png';
 import game5Icon from './assets/hexglIcon.png';
 import game6Icon from './assets/onOffIcon.png';
 import game7Icon from './assets/duckHuntIcon.png';
+import game8Icon from './assets/fadingSnakeIcon.png';
+import game9Icon from './assets/snake3dIcon.png';
+import game10Icon from './assets/aiSnakeIcon.png';
+import game11Icon from './assets/snakeIcon.png';
 
 export default function Leaderboard(props) {
     const apiURL="https://skillskopeserver.hopto.org:5001"; // https://kindofabrick.pythonanywhere.com // http://127.0.0.1:5000 // https://skillskopeserver.hopto.org:5001
@@ -15,7 +19,7 @@ export default function Leaderboard(props) {
     const [ranking, setRanking] = useState({});
     const [rankingShow, setRankingShow] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
-    const [gameInfo, setGameInfo] = useState([ ["Select the game", gameIcon, 0],["Racing Masters", game1Icon, 1],["Tower Building", game2Icon, 2],["Hextris", game3Icon, 3],["Pacman", game4Icon, 4],["HexGl", game5Icon, 5], ["OnOff", game6Icon, 6], ["Duck Hunt", game7Icon, 7] ]);
+    const [gameInfo, setGameInfo] = useState([ ["Select the game", gameIcon, 0],["Racing Masters", game1Icon, 1],["Tower Building", game2Icon, 2],["Hextris", game3Icon, 3],["Pacman", game4Icon, 4],["HexGl", game5Icon, 5], ["OnOff", game6Icon, 6], ["Duck Hunt", game7Icon, 7], ["Fading Snake", game8Icon, 8], ["Snake 3d", game9Icon, 9], ["AI Snake", game10Icon, 10], ["Snake", game11Icon, 11] ]);
 
     const selectIconFilter = (name) => {
         var temp = gameInfo.filter((el)=>el[0]==name).concat(gameInfo.filter((el)=>el[0]!=name));
@@ -112,7 +116,7 @@ export default function Leaderboard(props) {
     <div className="containerLeaderboard">
         <div className="leaderboardSearchbar">
             <div className="leaderboardSearchbarControls">
-                <div className='leaderboardSearchbarControlsIcon'>
+                <div className='leaderboardSearchbarControlsIcon' onMouseLeave={(e) => e.target.scrollTop=0}>
                     {gameInfo.map((el)=><img key={"icon_" + el[0].replace(" ", "")} src={el[1]} onClick={() => selectIconFilter(el[0])}/>)}
                 </div>
                 

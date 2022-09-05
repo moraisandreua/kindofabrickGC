@@ -205,7 +205,11 @@ export default function Main() {
     ["4","Kind of Pacman",game44,0],
     ["5","HexGL",game5,0],
     ["6","OnOff",game45,0],
-    ["7","Duck Hunt",game16,0]
+    ["7","Duck Hunt",game16,0],
+    ["8","Fading Snake",game25,0],
+    ["9","Snake 3d",game27,0],
+    ["10","AI Snake",game26,0],
+    ["11","Snake",game28,0]
   ]
 
   const getAds = () => {

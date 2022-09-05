@@ -83,9 +83,16 @@ a {
 	border-radius:10px;
 }
 
+.leaderboardSearchbarControlsIcon::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 .leaderboardSearchbarControlsIcon:hover{
-	height:fit-content;
+	height: 208px;
 	top:-5px;
+	overflow-y:scroll;
+	-ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
 }
 
 .leaderboardSearchbarControlsIcon img{

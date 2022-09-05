@@ -7,6 +7,10 @@ import game44 from './assets/game44.png';
 import game5 from './assets/game5.png';
 import game45 from './assets/game45.png';
 import game16 from './assets/game16.png';
+import game25 from './assets/game25.png';
+import game26 from './assets/game26.png';
+import game27 from './assets/game27.png';
+import game28 from './assets/game28.png';
 import './Game.css';
 
 export default function Game(props) {
@@ -32,7 +36,11 @@ export default function Game(props) {
     ["4","Kind of Pacman",game44,0, "description"],
     ["5","HexGL",game5,0, "description"],
     ["6","OnOff",game45 ,0, "description"],
-    ["7","Duck Hunt",game16 ,0, "description"]
+    ["7","Duck Hunt",game16 ,0, "description"],
+    ["8","Duck Hunt",game25 ,0, "description"],
+    ["9","Duck Hunt",game27 ,0, "description"],
+    ["10","Duck Hunt",game26 ,0, "description"],
+    ["11","Duck Hunt",game28 ,0, "description"]
   ];
 
   useEffect(()=>{
